@@ -1,0 +1,48 @@
+ORIG_PN="fftw"
+
+DESCRIPTION="Fast Fourier transforms C library"
+HOMEPAGE="http://www.fftw.org/"
+SRC_URI="http://www.fftw.org/${ORIG_PN}-${PV}.tar.gz"
+
+PKG_NAMES="${PN} ${PN}-devel"
+PKG_HINTS="setup devel"
+PKG_CONTENTS[0]='etc/ usr/bin/ usr/share/'
+PKG_CONTENTS[1]='usr/include/ usr/lib/'
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+
+	mkdir -p ${B}/float
+	cd ${B}/float
+	CYGCONF_SOURCE=${S} cygconf \
+		--enable-float \
+		--enable-threads \
+		--enable-shared --disable-static \
+		--with-windows-f77-mangling
+	cygmake
+
+	mkdir -p ${B}/long
+	cd ${B}/long
+	CYGCONF_SOURCE=${S} cygconf \
+		--enable-threads \
+		--enable-shared --disable-static \
+		--with-windows-f77-mangling
+	cygmake
+}
+
+src_test() {
+	for precision in float long
+	do
+		cd ${B}/${precision}/tests
+		cygtest
+	done
+}
+
+src_install() {
+	for precision in float long
+	do
+		cd ${B}/${precision}
+		cyginstall
+	done
+}

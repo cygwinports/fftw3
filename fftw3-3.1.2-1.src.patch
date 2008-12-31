@@ -1,0 +1,37 @@
+--- origsrc/fftw-3.1.2/Makefile.am	2006-01-27 18:16:22.000000000 -0600
++++ src/fftw-3.1.2/Makefile.am	2007-10-02 09:42:31.765625000 -0500
+@@ -10,8 +10,16 @@
+ 
+ ACLOCAL_AMFLAGS=-I ./m4
+ 
+-SUBDIRS=support $(GENFFT) kernel simd dft rdft reodft threads api	\
+-libbench2 . tests doc tools
++if COMBINED_THREADS
++threads_before = threads
++threads_after =
++else
++threads_before = 
++threads_after = threads
++endif
++
++SUBDIRS=support $(GENFFT) kernel simd dft rdft reodft $(threads_before) api	\
++libbench2 . $(threads_after) tests doc tools
+ EXTRA_DIST=COPYRIGHT bootstrap.sh CONVENTIONS fftw.pc.in m4
+ 
+ if HAVE_SIMD
+--- origsrc/fftw-3.1.2/threads/Makefile.am	2006-01-27 18:16:22.000000000 -0600
++++ src/fftw-3.1.2/threads/Makefile.am	2007-10-02 09:43:18.875000000 -0500
+@@ -6,6 +6,7 @@
+ noinst_LTLIBRARIES = libfftw3@PREC_SUFFIX@_threads.la
+ else
+ lib_LTLIBRARIES = libfftw3@PREC_SUFFIX@_threads.la
++libfftw3@PREC_SUFFIX@_threads_la_LIBADD = ../libfftw3@PREC_SUFFIX@.la
+ endif
+ endif
+ 
+@@ -13,4 +14,4 @@
+ threads.h dft-vrank-geq1.c ct.c rdft-vrank-geq1.c hc2hc.c		\
+ vrank-geq1-rdft2.c f77api.c f77funcs.h
+ 
+-libfftw3@PREC_SUFFIX@_threads_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
++libfftw3@PREC_SUFFIX@_threads_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@ -no-undefined

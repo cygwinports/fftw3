@@ -1,0 +1,94 @@
+fftw3
+------------------------------------------
+FFTW is a C subroutine library for computing the discrete Fourier 
+transform (DFT) in one or more dimensions, of arbitrary input size, and 
+of both real and complex data (as well as of even/odd data, i.e. the 
+discrete cosine/sine transforms or DCT/DST).
+
+Runtime requirements:
+  cygwin-1.5.24-2
+
+Build requirements:
+  cygwin-1.5.24-2
+  autoconf2.5-2.61-1
+  automake1.9-1.9.6-2
+  binutils-20060817-1
+  cygport-0.3.5-1
+  gawk-3.1.5-4
+  gcc-core-3.4.4-3
+  gcc-g77-3.4.4-3
+  libtool1.5-1.5.23a-2
+  make-3.81-1
+  sed-4.1.5-2
+
+Canonical website:
+  http://www.fftw.org/
+
+Canonical download:
+  ftp://ftp.fftw.org/pub/fftw/
+
+-------------------------------------------
+
+Build instructions:
+  unpack fftw3-3.1.2-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./fftw3-3.1.2-X.cygport all
+
+This will create:
+  /usr/src/fftw3-3.1.2-X-src.tar.bz2
+  /usr/src/fftw3-3.1.2-X.tar.bz2
+  /usr/src/fftw3-devel-3.1.2-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary packages:
+
+(fftw3)
+  /etc/postinstall/fftw3.sh
+  /usr/bin/cygfftw3-3.dll
+  /usr/bin/cygfftw3_threads-3.dll
+  /usr/bin/cygfftw3f-3.dll
+  /usr/bin/cygfftw3f_threads-3.dll
+  /usr/bin/fftw-wisdom-to-conf
+  /usr/bin/fftw-wisdom.exe
+  /usr/bin/fftwf-wisdom.exe
+  /usr/share/doc/Cygwin/fftw3-3.1.2.README
+  /usr/share/doc/fftw3-3.1.2/AUTHORS
+  /usr/share/doc/fftw3-3.1.2/COPYING
+  /usr/share/doc/fftw3-3.1.2/COPYRIGHT
+  /usr/share/doc/fftw3-3.1.2/ChangeLog
+  /usr/share/doc/fftw3-3.1.2/INSTALL
+  /usr/share/doc/fftw3-3.1.2/NEWS
+  /usr/share/doc/fftw3-3.1.2/README
+  /usr/share/doc/fftw3-3.1.2/TODO
+  /usr/share/info/fftw3.info.gz
+  /usr/share/man/man1/fftw-wisdom-to-conf.1.gz
+  /usr/share/man/man1/fftw-wisdom.1.gz
+  /usr/share/man/man1/fftwf-wisdom.1.gz
+
+(fftw3-devel)
+  /usr/include/fftw3.f
+  /usr/include/fftw3.h
+  /usr/lib/libfftw3.dll.a
+  /usr/lib/libfftw3.la
+  /usr/lib/libfftw3_threads.dll.a
+  /usr/lib/libfftw3_threads.la
+  /usr/lib/libfftw3f.dll.a
+  /usr/lib/libfftw3f.la
+  /usr/lib/libfftw3f_threads.dll.a
+  /usr/lib/libfftw3f_threads.la
+  /usr/lib/pkgconfig/fftw3.pc
+  /usr/lib/pkgconfig/fftw3f.pc
+
+------------------
+
+Port Notes:
+
+----- version 3.1.2-1 -----
+Version bump; last distro release was 3.0.1-2.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

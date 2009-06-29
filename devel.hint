@@ -1,5 +1,5 @@
 category: Libs Math
-requires: cygwin fftw3
+requires: fftw3
 external-source: fftw3
 sdesc: "Discrete Fourier transform library (development)"
 ldesc: "FFTW is a C subroutine library for computing the discrete 
